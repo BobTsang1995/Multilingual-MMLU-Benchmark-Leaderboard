@@ -6,7 +6,7 @@ from huggingface_hub import HfApi
 # ----------------------------------
 TOKEN = os.environ.get("HF_TOKEN") # A read/write token for your org
 
-OWNER = "Multilingual-MMLU-Benchmark-Leaderboard" # Change to your org - don't forget to create a results and request dataset, with the correct format!
+OWNER = "StarscreamDeceptions" # Change to your org - don't forget to create a results and request dataset, with the correct format!
 DEVICE = "cpu"  # "cuda:0" if you add compute
 # ----------------------------------
 
