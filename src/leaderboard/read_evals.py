@@ -10,7 +10,9 @@ import numpy as np
 from src.display.formatting import make_clickable_model
 from src.display.utils import AutoEvalColumn, ModelType, Tasks, Precision, WeightType
 from src.submission.check_validity import is_model_on_hub
+# from src.tasks import Categories
 
+# tasks_df = pd.read_csv("tasks.csv")
 
 @dataclass
 class EvalResult:
@@ -18,14 +20,14 @@ class EvalResult:
     """
     eval_name: str # org_model_precision (uid)
     full_model: str # org/model (path on hub)
-    org: str 
+    org: str
     model: str
     revision: str # commit hash, "" if main
     results: dict
     precision: Precision = Precision.Unknown
     model_type: ModelType = ModelType.Unknown # Pretrained, fine tuned, ...
     weight_type: WeightType = WeightType.Original # Original or Adapter
-    architecture: str = "Unknown" 
+    architecture: str = "Unknown"
     license: str = "?"
     likes: int = 0
     num_params: int = 0
@@ -37,6 +39,7 @@ class EvalResult:
         """Inits the result from the specific model result file"""
         with open(json_filepath) as fp:
             data = json.load(fp)
+            # print('#####',json_filepath)
 
         config = data.get("config")
 
@@ -70,7 +73,6 @@ class EvalResult:
         results = {}
         for task in Tasks:
             task = task.value
-
             # We average all scores of a given metric (not all metrics are present in all files)
             accs = np.array([v.get(task.metric, None) for k, v in data["results"].items() if task.benchmark == k])
             if accs.size == 0 or any([acc is None for acc in accs]):
@@ -85,7 +87,7 @@ class EvalResult:
             org=org,
             model=model,
             results=results,
-            precision=precision,  
+            precision=precision,
             revision= config.get("model_sha", ""),
             still_on_hub=still_on_hub,
             architecture=architecture
@@ -93,7 +95,8 @@ class EvalResult:
 
     def update_with_request_file(self, requests_path):
         """Finds the relevant request file for the current model and updates info with it"""
-        request_file = get_request_file_for_model(requests_path, self.full_model, self.precision.value.name)
+        request_file = get_request_file_for_model(requests_path, self.full_model.split("/")[-1], self.precision.value.name)
+        # print("########",request_file)
 
         try:
             with open(request_file, "r") as f:
@@ -109,7 +112,9 @@ class EvalResult:
 
     def to_dict(self):
         """Converts the Eval Result to a dict compatible with our dataframe display"""
-        average = sum([v for v in self.results.values() if v is not None]) / len(Tasks)
+        keys_to_average = ['mmmlu', 'mmlu', 'cmmlu']
+        average = sum([self.results[key] for key in keys_to_average if self.results.get(key) is not None]) / len(
+            keys_to_average)
         data_dict = {
             "eval_name": self.eval_name,  # not a column, just a save name,
             AutoEvalColumn.precision.name: self.precision.value.name,
@@ -136,6 +141,7 @@ def get_request_file_for_model(requests_path, model_name, precision):
     """Selects the correct request file for a given model. Only keeps runs tagged as FINISHED"""
     request_files = os.path.join(
         requests_path,
+        model_name,
         f"{model_name}_eval_request_*.json",
     )
     request_files = glob.glob(request_files)

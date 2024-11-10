@@ -8,8 +8,12 @@ from src.about import (
     CITATION_BUTTON_LABEL,
     CITATION_BUTTON_TEXT,
     EVALUATION_QUEUE_TEXT,
+    EVALUATION_QUEUE_TEXT_ZH,
     INTRODUCTION_TEXT,
+    INTRODUCTION_TEXT_ZH,
     LLM_BENCHMARKS_TEXT,
+    LLM_BENCHMARKS_TEXT_ZH,
+    LOGOS,
     TITLE,
 )
 from src.display.css_html_js import custom_css
@@ -32,7 +36,7 @@ from src.submission.submit import add_new_eval
 def restart_space():
     API.restart_space(repo_id=REPO_ID)
 
-### Space initialisation
+## Space initialisation
 try:
     print(EVAL_REQUESTS_PATH)
     snapshot_download(
@@ -93,18 +97,25 @@ demo = gr.Blocks(css=custom_css)
 with demo:
     gr.HTML(TITLE)
     gr.Markdown(INTRODUCTION_TEXT, elem_classes="markdown-text")
+    gr.Markdown(INTRODUCTION_TEXT_ZH, elem_classes="markdown-text")
 
     with gr.Tabs(elem_classes="tab-buttons") as tabs:
         with gr.TabItem("🏅 LLM Benchmark", elem_id="llm-benchmark-tab-table", id=0):
             leaderboard = init_leaderboard(LEADERBOARD_DF)
 
         with gr.TabItem("📝 About", elem_id="llm-benchmark-tab-table", id=2):
-            gr.Markdown(LLM_BENCHMARKS_TEXT, elem_classes="markdown-text")
+            with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
+                gr.Markdown(LLM_BENCHMARKS_TEXT, elem_classes="markdown-text")
+            with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
+                gr.Markdown(LLM_BENCHMARKS_TEXT_ZH, elem_classes="markdown-text")
 
         with gr.TabItem("🚀 Submit here! ", elem_id="llm-benchmark-tab-table", id=3):
             with gr.Column():
                 with gr.Row():
-                    gr.Markdown(EVALUATION_QUEUE_TEXT, elem_classes="markdown-text")
+                    with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
+                        gr.Markdown(EVALUATION_QUEUE_TEXT, elem_classes="markdown-text")
+                    with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
+                        gr.Markdown(EVALUATION_QUEUE_TEXT_ZH, elem_classes="markdown-text")
 
                 with gr.Column():
                     with gr.Accordion(
@@ -196,6 +207,15 @@ with demo:
                 lines=20,
                 elem_id="citation-button",
                 show_copy_button=True,
+            )
+    with gr.Row():
+        for logo_path in LOGOS:
+            gr.Image(
+                value=logo_path,
+                show_label=False,
+                show_download_button=False,
+                show_share_button=False,
+                show_fullscreen_button=False,
             )
 
 scheduler = BackgroundScheduler()
