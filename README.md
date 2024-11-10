@@ -1,5 +1,5 @@
 ---
-title: Multilingual Test
+title: Multilingual MMLU Benchmark Leaderboard
 emoji: 🥇
 colorFrom: green
 colorTo: indigo
