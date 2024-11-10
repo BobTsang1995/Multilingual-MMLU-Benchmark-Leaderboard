@@ -1,5 +1,5 @@
 ---
-title: Demo Leaderboard
+title: Multilingual MMLU Benchmark Leaderboard
 emoji: 🥇
 colorFrom: green
 colorTo: indigo
@@ -7,6 +7,7 @@ sdk: gradio
 app_file: app.py
 pinned: true
 license: apache-2.0
+short_description: Multilingual MMLU Benchmark Leaderboard
 ---
 
 # Start the configuration
