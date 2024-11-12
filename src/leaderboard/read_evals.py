@@ -96,7 +96,7 @@ class EvalResult:
     def update_with_request_file(self, requests_path):
         """Finds the relevant request file for the current model and updates info with it"""
         request_file = get_request_file_for_model(requests_path, self.full_model.split("/")[-1], self.precision.value.name)
-        # print("########",request_file)
+        # print("########",requests_path,self.full_model.split("/")[-1])
 
         try:
             with open(request_file, "r") as f:
@@ -112,9 +112,10 @@ class EvalResult:
 
     def to_dict(self):
         """Converts the Eval Result to a dict compatible with our dataframe display"""
-        keys_to_average = ['mmmlu', 'mmlu', 'cmmlu']
-        average = sum([self.results[key] for key in keys_to_average if self.results.get(key) is not None]) / len(
-            keys_to_average)
+        # keys_to_average = ['mmmlu', 'mmlu', 'cmmlu']
+        # average = sum([self.results[key] for key in keys_to_average if self.results.get(key) is not None]) / len(
+        #     keys_to_average)
+        average = sum([v for v in self.results.values() if v is not None]) / len(Tasks)
         data_dict = {
             "eval_name": self.eval_name,  # not a column, just a save name,
             AutoEvalColumn.precision.name: self.precision.value.name,
@@ -182,6 +183,7 @@ def get_raw_eval_results(results_path: str, requests_path: str) -> list[EvalResu
     for model_result_filepath in model_result_filepaths:
         # Creation of result
         eval_result = EvalResult.init_from_json_file(model_result_filepath)
+        print(results_path)
         eval_result.update_with_request_file(requests_path)
 
         # Store results of same eval together
@@ -198,5 +200,4 @@ def get_raw_eval_results(results_path: str, requests_path: str) -> list[EvalResu
             results.append(v)
         except KeyError:  # not all eval values present
             continue
-
     return results

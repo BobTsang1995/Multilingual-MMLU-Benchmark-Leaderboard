@@ -36,7 +36,7 @@ from src.submission.submit import add_new_eval
 def restart_space():
     API.restart_space(repo_id=REPO_ID)
 
-## Space initialisation
+# Space initialisation
 try:
     print(EVAL_REQUESTS_PATH)
     snapshot_download(
@@ -54,12 +54,14 @@ except Exception:
 
 
 LEADERBOARD_DF = get_leaderboard_df(EVAL_RESULTS_PATH, EVAL_REQUESTS_PATH, COLS, BENCHMARK_COLS)
+# print("Before calling init_leaderboard:", LEADERBOARD_DF)
 
 (
     finished_eval_queue_df,
     running_eval_queue_df,
     pending_eval_queue_df,
 ) = get_evaluation_queue_df(EVAL_REQUESTS_PATH, EVAL_COLS)
+
 
 def init_leaderboard(dataframe):
     if dataframe is None or dataframe.empty:
@@ -74,20 +76,20 @@ def init_leaderboard(dataframe):
         ),
         search_columns=[AutoEvalColumn.model.name, AutoEvalColumn.license.name],
         hide_columns=[c.name for c in fields(AutoEvalColumn) if c.hidden],
-        filter_columns=[
-            ColumnFilter(AutoEvalColumn.model_type.name, type="checkboxgroup", label="Model types"),
-            ColumnFilter(AutoEvalColumn.precision.name, type="checkboxgroup", label="Precision"),
-            ColumnFilter(
-                AutoEvalColumn.params.name,
-                type="slider",
-                min=0.01,
-                max=150,
-                label="Select the number of parameters (B)",
-            ),
-            ColumnFilter(
-                AutoEvalColumn.still_on_hub.name, type="boolean", label="Deleted/incomplete", default=True
-            ),
-        ],
+        # filter_columns=[
+        #     ColumnFilter(AutoEvalColumn.model_type.name, type="checkboxgroup", label="Model types"),
+        #     ColumnFilter(AutoEvalColumn.precision.name, type="checkboxgroup", label="Precision"),
+        #     ColumnFilter(
+        #         AutoEvalColumn.params.name,
+        #         type="slider",
+        #         min=0.01,
+        #         max=150,
+        #         label="Select the number of parameters (B)",
+        #     ),
+        #     ColumnFilter(
+        #         AutoEvalColumn.still_on_hub.name, type="boolean", label="Deleted/incomplete", default=True
+        #     ),
+        # ],
         bool_checkboxgroup_label="Hide models",
         interactive=False,
     )
@@ -97,7 +99,7 @@ demo = gr.Blocks(css=custom_css)
 with demo:
     gr.HTML(TITLE)
     gr.Markdown(INTRODUCTION_TEXT, elem_classes="markdown-text")
-    gr.Markdown(INTRODUCTION_TEXT_ZH, elem_classes="markdown-text")
+    # gr.Markdown(INTRODUCTION_TEXT_ZH, elem_classes="markdown-text")
 
     with gr.Tabs(elem_classes="tab-buttons") as tabs:
         with gr.TabItem("🏅 LLM Benchmark", elem_id="llm-benchmark-tab-table", id=0):
@@ -106,16 +108,16 @@ with demo:
         with gr.TabItem("📝 About", elem_id="llm-benchmark-tab-table", id=2):
             with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
                 gr.Markdown(LLM_BENCHMARKS_TEXT, elem_classes="markdown-text")
-            with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
-                gr.Markdown(LLM_BENCHMARKS_TEXT_ZH, elem_classes="markdown-text")
+            # with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
+            #     gr.Markdown(LLM_BENCHMARKS_TEXT_ZH, elem_classes="markdown-text")
 
         with gr.TabItem("🚀 Submit here! ", elem_id="llm-benchmark-tab-table", id=3):
             with gr.Column():
                 with gr.Row():
                     with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
                         gr.Markdown(EVALUATION_QUEUE_TEXT, elem_classes="markdown-text")
-                    with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
-                        gr.Markdown(EVALUATION_QUEUE_TEXT_ZH, elem_classes="markdown-text")
+                    # with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
+                    #     gr.Markdown(EVALUATION_QUEUE_TEXT_ZH, elem_classes="markdown-text")
 
                 with gr.Column():
                     with gr.Accordion(
@@ -221,4 +223,4 @@ with demo:
 scheduler = BackgroundScheduler()
 scheduler.add_job(restart_space, "interval", seconds=1800)
 scheduler.start()
-demo.queue(default_concurrency_limit=40).launch()
+demo.queue(default_concurrency_limit=40).launch(share=True)

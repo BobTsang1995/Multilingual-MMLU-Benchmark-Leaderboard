@@ -13,8 +13,8 @@ class Task:
 class Tasks(Enum):
     # task_key in the json file, metric_key in the json file, name to display in the leaderboard 
     task0 = Task("mmmlu", "acc", "MMMLU")
-    task1 = Task("mmlu", "acc", "MMLU")
-    task2 = Task("cmmlu", "acc", "CMMLU")
+    # task1 = Task("mmlu", "acc", "MMLU")
+    # task2 = Task("cmmlu", "acc", "CMMLU")
     task3 = Task("mmmlu_ar", "acc", "MMMLU_AR")
     task4 = Task("mmmlu_bn", "acc", "MMMLU_BN")
     task5 = Task("mmmlu_de", "acc", "MMMLU_DE")
