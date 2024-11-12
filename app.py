@@ -76,20 +76,20 @@ def init_leaderboard(dataframe):
         ),
         search_columns=[AutoEvalColumn.model.name, AutoEvalColumn.license.name],
         hide_columns=[c.name for c in fields(AutoEvalColumn) if c.hidden],
-        # filter_columns=[
-        #     ColumnFilter(AutoEvalColumn.model_type.name, type="checkboxgroup", label="Model types"),
-        #     ColumnFilter(AutoEvalColumn.precision.name, type="checkboxgroup", label="Precision"),
-        #     ColumnFilter(
-        #         AutoEvalColumn.params.name,
-        #         type="slider",
-        #         min=0.01,
-        #         max=150,
-        #         label="Select the number of parameters (B)",
-        #     ),
-        #     ColumnFilter(
-        #         AutoEvalColumn.still_on_hub.name, type="boolean", label="Deleted/incomplete", default=True
-        #     ),
-        # ],
+        filter_columns=[
+            ColumnFilter(AutoEvalColumn.model_type.name, type="checkboxgroup", label="Model types"),
+            ColumnFilter(AutoEvalColumn.precision.name, type="checkboxgroup", label="Precision"),
+            ColumnFilter(
+                AutoEvalColumn.params.name,
+                type="slider",
+                min=0.01,
+                max=150,
+                label="Select the number of parameters (B)",
+            ),
+            ColumnFilter(
+                AutoEvalColumn.still_on_hub.name, type="boolean", label="Deleted/incomplete", default=False
+            ),
+        ],
         bool_checkboxgroup_label="Hide models",
         interactive=False,
     )

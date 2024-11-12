@@ -65,6 +65,7 @@ class ModelType(Enum):
     PT = ModelDetails(name="pretrained", symbol="🟢")
     FT = ModelDetails(name="fine-tuned", symbol="🔶")
     IFT = ModelDetails(name="instruction-tuned", symbol="⭕")
+    CT = ModelDetails(name="chat-tuned", symbol="💬")
     RL = ModelDetails(name="RL-tuned", symbol="🟦")
     Unknown = ModelDetails(name="", symbol="?")
 
@@ -81,6 +82,8 @@ class ModelType(Enum):
             return ModelType.RL
         if "instruction-tuned" in type or "⭕" in type:
             return ModelType.IFT
+        if "chat-tuned" in type or "💬" in type:
+            return ModelType.CT
         return ModelType.Unknown
 
 class WeightType(Enum):
@@ -102,6 +105,7 @@ class Precision(Enum):
 
 # Column selection
 COLS = [c.name for c in fields(AutoEvalColumn) if not c.hidden]
+
 
 EVAL_COLS = [c.name for c in fields(EvalQueueColumn)]
 EVAL_TYPES = [c.type for c in fields(EvalQueueColumn)]
