@@ -12,23 +12,23 @@ class Task:
 # ---------------------------------------------------
 class Tasks(Enum):
     # task_key in the json file, metric_key in the json file, name to display in the leaderboard 
-    task0 = Task("mmmlu", "acc", "MMMLU")
+    # task0 = Task("mmmlu", "acc", "MMMLU")
     # task1 = Task("mmlu", "acc", "MMLU")
     # task2 = Task("cmmlu", "acc", "CMMLU")
-    task3 = Task("mmmlu_ar", "acc", "MMMLU_AR")
-    task4 = Task("mmmlu_bn", "acc", "MMMLU_BN")
-    task5 = Task("mmmlu_de", "acc", "MMMLU_DE")
-    task6 = Task("mmmlu_es", "acc", "MMMLU_ES")
-    task7 = Task("mmmlu_fr", "acc", "MMMLU_FR")
-    task8 = Task("mmmlu_hi", "acc", "MMMLU_HI")
-    task9 = Task("mmmlu_id", "acc", "MMMLU_ID")
-    task10 = Task("mmmlu_it", "acc", "MMMLU_IT")
-    task11 = Task("mmmlu_ja", "acc", "MMMLU_JA")
-    task12 = Task("mmmlu_ko", "acc", "MMMLU_KO")
-    task13 = Task("mmmlu_pt", "acc", "MMMLU_PT")
-    task14 = Task("mmmlu_sw", "acc", "MMMLU_SW")
-    task15 = Task("mmmlu_yo", "acc", "MMMLU_YO")
-    task16 = Task("mmmlu_zh", "acc", "MMMLU_ZH")
+    mmmlu_ar = Task("mmmlu_ar", "acc", "MMMLU_AR")
+    mmmlu_bn = Task("mmmlu_bn", "acc", "MMMLU_BN")
+    mmmlu_de = Task("mmmlu_de", "acc", "MMMLU_DE")
+    mmmlu_es = Task("mmmlu_es", "acc", "MMMLU_ES")
+    mmmlu_fr = Task("mmmlu_fr", "acc", "MMMLU_FR")
+    mmmlu_hi = Task("mmmlu_hi", "acc", "MMMLU_HI")
+    mmmlu_id = Task("mmmlu_id", "acc", "MMMLU_ID")
+    mmmlu_it = Task("mmmlu_it", "acc", "MMMLU_IT")
+    mmmlu_ja = Task("mmmlu_ja", "acc", "MMMLU_JA")
+    mmmlu_ko = Task("mmmlu_ko", "acc", "MMMLU_KO")
+    mmmlu_pt = Task("mmmlu_pt", "acc", "MMMLU_PT")
+    mmmlu_sw = Task("mmmlu_sw", "acc", "MMMLU_SW")
+    mmmlu_yo = Task("mmmlu_yo", "acc", "MMMLU_YO")
+    mmmlu_zh = Task("mmmlu_zh", "acc", "MMMLU_ZH")
 NUM_FEWSHOT = 5 # Change with your few shot
 # ---------------------------------------------------
 
@@ -148,7 +148,7 @@ We also thank [Institution1 Placeholder], [Institution2 Placeholder], [Organizat
 
 We would like to create a leaderboard as diverse as possible, reach out if you would like us to include your evaluation dataset!
 
-Comments and suggestions are more than welcome! Visit the [👏 Community](<Community Page Placeholder>) page, tell us what you think about La Leaderboard and how we can improve it, or go ahead and open a PR!
+Comments and suggestions are more than welcome! Visit the [👏 Community](<Community Page Placeholder>) page, tell us what you think about MMMLU Leaderboard and how we can improve it, or go ahead and open a PR!
 
 Thank you very much! 💛
 
@@ -256,7 +256,7 @@ MMMLU 排行榜旨在为比较 AI 模型在这些多语言和多领域中的表�
 
 我们希望创建一个尽可能多样化的排行榜，欢迎联系我们如果你希望我们将你的评估数据集包含在内！
 
-评论和建议非常欢迎！请访问 [👏 社区](<Community Page Placeholder>) 页面，告诉我们你对 La 排行榜的看法以及我们如何改进，或者直接打开一个 PR！
+评论和建议非常欢迎！请访问 [👏 社区](<Community Page Placeholder>) 页面，告诉我们你对 MMMLU 排行榜的看法以及我们如何改进，或者直接打开一个 PR！
 
 非常感谢！ 💛
 """

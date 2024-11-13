@@ -106,16 +106,16 @@ with demo:
             leaderboard = init_leaderboard(LEADERBOARD_DF)
 
         with gr.TabItem("📝 About", elem_id="llm-benchmark-tab-table", id=2):
-            with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
-                gr.Markdown(LLM_BENCHMARKS_TEXT, elem_classes="markdown-text")
+            # with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
+            gr.Markdown(LLM_BENCHMARKS_TEXT, elem_classes="markdown-text")
             # with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
             #     gr.Markdown(LLM_BENCHMARKS_TEXT_ZH, elem_classes="markdown-text")
 
         with gr.TabItem("🚀 Submit here! ", elem_id="llm-benchmark-tab-table", id=3):
             with gr.Column():
                 with gr.Row():
-                    with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
-                        gr.Markdown(EVALUATION_QUEUE_TEXT, elem_classes="markdown-text")
+                    # with gr.TabItem("EN", elem_id="llm-benchmark-tab-table", id=1):
+                    gr.Markdown(EVALUATION_QUEUE_TEXT, elem_classes="markdown-text")
                     # with gr.TabItem("ZH", elem_id="llm-benchmark-tab-table", id=2):
                     #     gr.Markdown(EVALUATION_QUEUE_TEXT_ZH, elem_classes="markdown-text")
 
