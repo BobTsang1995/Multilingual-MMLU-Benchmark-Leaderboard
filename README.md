@@ -1,13 +1,21 @@
 ---
-title: Multilingual MMLU Benchmark Leaderboard
-emoji: 🥇
-colorFrom: green
-colorTo: indigo
+title: 🌐 Multilingual MMLU Benchmark Leaderboard
+emoji: 🏆
+colorFrom: teal
+colorTo: purple
 sdk: gradio
 app_file: app.py
 pinned: true
 license: apache-2.0
+description: "Compare multilingual models on the MMLU benchmark leaderboard across languages and tasks"
+tags:
+  - multilingual
+  - benchmark
+  - MMMLU
+  - leaderboard
+  - machine learning
 ---
+
 # Multilingual MMLU Benchmark Leaderboard
 
 Welcome to the **Multilingual MMLU Benchmark Leaderboard**! This leaderboard is designed to assess the performance of both open-source and closed-source language models on the **Multilingual MMLU (Massive Multitask Language Understanding)** benchmark. The benchmark evaluates the memorization, reasoning, and linguistic capabilities of models across a wide range of languages, making it a crucial tool for comparing multilingual AI performance.
