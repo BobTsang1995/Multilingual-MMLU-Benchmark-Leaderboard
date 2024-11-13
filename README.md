@@ -1,7 +1,7 @@
 ---
 title: 🌐 Multilingual MMLU Benchmark Leaderboard
 emoji: 🏆
-colorFrom: teal
+colorFrom: pink
 colorTo: purple
 sdk: gradio
 app_file: app.py
