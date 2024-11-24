@@ -97,7 +97,11 @@ def init_leaderboard(dataframe):
 
 demo = gr.Blocks(css=custom_css)
 with demo:
-    gr.HTML(TITLE)
+    # gr.HTML(TITLE)
+    # with gr.Row():
+    #     gr.Image(value="static/title/title.png", show_label=False,elem_classes=["custom-image"])
+    with gr.Row():
+        gr.Markdown(TITLE)
     gr.Markdown(INTRODUCTION_TEXT, elem_classes="markdown-text")
     # gr.Markdown(INTRODUCTION_TEXT_ZH, elem_classes="markdown-text")
 
@@ -211,14 +215,25 @@ with demo:
                 show_copy_button=True,
             )
     with gr.Row():
-        for logo_path in LOGOS:
-            gr.Image(
-                value=logo_path,
-                show_label=False,
-                show_download_button=False,
-                show_share_button=False,
-                show_fullscreen_button=False,
-            )
+        with gr.Row(equal_height=True):
+            for logo_path in LOGOS[:6]:
+                gr.Image(
+                    value=logo_path,
+                    show_label=False,
+                    show_download_button=False,
+                    show_share_button=False,
+                    show_fullscreen_button=False,
+                )
+    with gr.Row():
+        with gr.Row(equal_height=True):  # 保证每行元素高度一致
+            for logo_path in LOGOS[6:]:
+                gr.Image(
+                    value=logo_path,
+                    show_label=False,
+                    show_download_button=False,
+                    show_share_button=False,
+                    show_fullscreen_button=False,
+                )
 
 scheduler = BackgroundScheduler()
 scheduler.add_job(restart_space, "interval", seconds=1800)

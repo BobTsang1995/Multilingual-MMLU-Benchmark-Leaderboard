@@ -15,27 +15,28 @@ class Tasks(Enum):
     # task0 = Task("mmmlu", "acc", "MMMLU")
     # task1 = Task("mmlu", "acc", "MMLU")
     # task2 = Task("cmmlu", "acc", "CMMLU")
-    mmmlu_ar = Task("mmmlu_ar", "acc", "MMMLU_AR")
-    mmmlu_bn = Task("mmmlu_bn", "acc", "MMMLU_BN")
-    mmmlu_de = Task("mmmlu_de", "acc", "MMMLU_DE")
-    mmmlu_es = Task("mmmlu_es", "acc", "MMMLU_ES")
-    mmmlu_fr = Task("mmmlu_fr", "acc", "MMMLU_FR")
-    mmmlu_hi = Task("mmmlu_hi", "acc", "MMMLU_HI")
-    mmmlu_id = Task("mmmlu_id", "acc", "MMMLU_ID")
-    mmmlu_it = Task("mmmlu_it", "acc", "MMMLU_IT")
-    mmmlu_ja = Task("mmmlu_ja", "acc", "MMMLU_JA")
-    mmmlu_ko = Task("mmmlu_ko", "acc", "MMMLU_KO")
-    mmmlu_pt = Task("mmmlu_pt", "acc", "MMMLU_PT")
-    mmmlu_sw = Task("mmmlu_sw", "acc", "MMMLU_SW")
-    mmmlu_yo = Task("mmmlu_yo", "acc", "MMMLU_YO")
-    mmmlu_zh = Task("mmmlu_zh", "acc", "MMMLU_ZH")
+    mmmlu_ar = Task("mmmlu_ar", "acc", "AR")
+    mmmlu_bn = Task("mmmlu_bn", "acc", "BN")
+    mmmlu_de = Task("mmmlu_de", "acc", "DE")
+    mmmlu_es = Task("mmmlu_es", "acc", "ES")
+    mmmlu_fr = Task("mmmlu_fr", "acc", "FR")
+    mmmlu_hi = Task("mmmlu_hi", "acc", "HI")
+    mmmlu_id = Task("mmmlu_id", "acc", "ID")
+    mmmlu_it = Task("mmmlu_it", "acc", "IT")
+    mmmlu_ja = Task("mmmlu_ja", "acc", "JA")
+    mmmlu_ko = Task("mmmlu_ko", "acc", "KO")
+    mmmlu_pt = Task("mmmlu_pt", "acc", "PT")
+    mmmlu_sw = Task("mmmlu_sw", "acc", "SW")
+    mmmlu_yo = Task("mmmlu_yo", "acc", "YO")
+    mmmlu_zh = Task("mmmlu_zh", "acc", "ZH")
 NUM_FEWSHOT = 5 # Change with your few shot
 # ---------------------------------------------------
 
 
 
 # Your leaderboard name
-TITLE = """<h1 align="center" id="space-title">Multilingual MMLU Benchmark Leaderboard</h1>"""
+TITLE = """<img src="static/title/title.png" style="width:30%;display:block;margin-left:auto;margin-right:auto;border-radius:15px;">"""
+
 
 # What does your leaderboard evaluate?
 INTRODUCTION_TEXT = """
@@ -324,16 +325,17 @@ CITATION_BUTTON_LABEL = "复制以下代码引用这些结果"
 CITATION_BUTTON_TEXT = r"""
 """
 LOGOS = [
-    "logo/amsterdam-logo.png",
-    "logo/cardiff-logo.png",
-    "logo/coimbra-logo.png",
-    "logo/dcu-logo.png",
-    "logo/MBZU-logo.png",
-    "logo/NAIST-logo.png",
-    "logo/OSU-logo.png",
-    "logo/rmit.png",
-    "logo/sjtu-logo.png",
-    "logo/tsinghua-logo.png",
-    "logo/UGA-logo.png",
-    "logo/um-logo.png"
+    # "logo/amsterdam-logo.png",
+    # "logo/cardiff-logo.png",
+    # "logo/coimbra-logo.png",
+    # "logo/dcu-logo.png",
+    # "logo/MBZU-logo.png",
+    # "logo/NAIST-logo.png",
+    # "logo/OSU-logo.png",
+    # "logo/rmit.png",
+    # "logo/sjtu-logo.png",
+    # "logo/tsinghua-logo.png",
+    # "logo/UGA-logo.png",
+    # "logo/um-logo.png"
+    "logo/all.png"
 ]
