@@ -324,8 +324,16 @@ CITATION_BUTTON_LABEL = "复制以下代码引用这些结果"
 CITATION_BUTTON_TEXT = r"""
 """
 LOGOS = [
-    "logo/HuggingFace.png",
-    "logo/openai-logo.png",
-    "logo/logo_qwen.png",
-    "logo/CAIS.png"
+    "logo/amsterdam-logo.png",
+    "logo/cardiff-logo.png",
+    "logo/coimbra-logo.png",
+    "logo/dcu-logo.png",
+    "logo/MBZU-logo.png",
+    "logo/NAIST-logo.png",
+    "logo/OSU-logo.png",
+    "logo/rmit.png",
+    "logo/sjtu-logo.png",
+    "logo/tsinghua-logo.png",
+    "logo/UGA-logo.png",
+    "logo/um-logo.png"
 ]
